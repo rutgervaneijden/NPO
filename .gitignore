@@ -1,0 +1,6 @@
+.venv/
+build/
+dist/
+make.sh
+*.spec
+.DS_Store
