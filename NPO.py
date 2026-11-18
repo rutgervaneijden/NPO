@@ -20,6 +20,9 @@ class Tray(QSystemTrayIcon):
             action.triggered.connect(lambda checked=False, logo=logo, url=url: self.on_station_triggered(logo, url))
             self.menu.addAction(action)
         self.menu.addSeparator()
+        bmac_action = QAction('Buy Me a Coffee', self)
+        # bmac_action.triggered.connect()
+        self.menu.addAction(bmac_action)
         quit_action = QAction('Quit', self)
         quit_action.triggered.connect(self.app.quit)
         self.menu.addAction(quit_action)
@@ -37,7 +40,11 @@ class Tray(QSystemTrayIcon):
 
     def on_tray_activated(self, reason):
         if reason == QSystemTrayIcon.ActivationReason.Trigger: # Left-click
-            self.player.stop() if self.player.isPlaying() else self.player.play()
+            if self.player.source().isEmpty():
+                pos = self.geometry().bottomLeft()
+                self.menu.popup(pos)
+            else:
+                self.player.stop() if self.player.isPlaying() else self.player.play()
         elif reason == QSystemTrayIcon.ActivationReason.Context: # Right-click
             pos = self.geometry().bottomLeft()
             self.menu.popup(pos)
