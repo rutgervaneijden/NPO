@@ -1,6 +1,6 @@
 .venv/
-build/
-dist/
+archive/
 make.sh
 *.spec
 .DS_Store
+NPO.app
