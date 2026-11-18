@@ -1,6 +1,6 @@
 .venv/
 archive/
-make.sh
+*.app
+*.exe
 *.spec
 .DS_Store
-NPO.app

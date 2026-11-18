@@ -1,0 +1,1 @@
+pyside6-deploy .\NPO.py --mode onefile
